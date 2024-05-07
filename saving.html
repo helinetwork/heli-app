@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saving - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <script src="./js/package/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center" onclick="window.history.go(-1)">
+          <ion-icon
+            class="text-main"
+            style="width: 24px; height: 24px"
+            name="chevron-back"
+          ></ion-icon>
+        </div>
+        <div class="">
+          <span class="text-main font-bold" style="font-size: 24px">SAVING</span>
+        </div>
+        <div class="">
+          <span class="text-black" style="width: 24px">----</span>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+
+    <article
+      class="section-container d-flex flex-column gap-3"
+      style="padding-bottom: 50px"
+    >
+      <section
+        class="background-main d-flex p-3 text-small font-semibold align-items-center"
+        style="border-radius: 14px"
+      >
+        <div class="w-50 d-flex flex-column gap-2">
+          <span>TOTAL HELI SENT</span>
+          <span class="font-bold" style="font-size: 24px">100</span>
+        </div>
+        <div class="w-50 d-flex flex-column gap-2">
+          <span>ACCUMULATED PROFIT</span>
+          <span class="font-bold" style="font-size: 24px">+30</span>
+        </div>
+      </section>
+      <!-- load api -->
+      <section class="d-flex flex-column gap-3" id="loadSaving">
+        <!--  -->
+      </section>
+    </article>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="ModalSaving"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark">
+          <div class="modal-body text-white d-flex flex-column gap-3">
+            <section>
+              <span class="text-main font-bold d-flex justify-content-center"
+                >SUBMIT SAVING</span
+              >
+            </section>
+            <section>
+              <!--  -->
+              <div class="text-small">
+                <label for="basic-url" class="form-label"
+                  >Please enter the amount you want to Saving</label
+                >
+                <div
+                  class="background-secondary d-flex align-items-center pe-3 ps-1"
+                  style="border-radius: 8px"
+                >
+                  <input
+                    type="text"
+                    class="flex-grow-1 text-white  text-small"
+                    placeholder="Minimum 1 HELI"
+                    style="
+                      background-color: transparent;
+                      border: none;
+                      height: 35px;
+                    "
+                  />
+                  <span>Heli</span>
+                </div>
+                <span class="form-text text-white mt-3"
+                  >Available: 100 HELI</span
+                >
+              </div>
+              <!--  -->
+            </section>
+            <section class="d-flex justify-content-between gap-3">
+              <button
+                data-bs-dismiss="modal"
+                class="w-50 text-main background-secondary py-1"
+                style="border: none; border-radius: 24px"
+              >
+                No</button
+              ><button
+                class="w-50 background-main py-1"
+                style="border: none; border-radius: 24px"
+              >
+                Yes
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+  </body>
+
+  <script>
+    const dataPack = [
+      {
+        id: 124,
+        title: "12-month package",
+        Total_HELI_sent: "100",
+        Total_profit: "30",
+        Interest_rate: "14%",
+        Total_submissions: "120",
+      },
+      {
+        id: 121,
+        title: "6-month package",
+        Total_HELI_sent: "100",
+        Total_profit: "30",
+        Interest_rate: "14%",
+        Total_submissions: "120",
+      },
+      {
+        id: 127,
+        title: "3-month package",
+        Total_HELI_sent: "100",
+        Total_profit: "30",
+        Interest_rate: "14%",
+        Total_submissions: "120",
+      },
+    ];
+
+    async function getPack() {
+      const loadSaving = document.getElementById("loadSaving");
+      dataPack.forEach((items) => {
+        const container = document.createElement("div");
+        container.setAttribute("type", "button");
+        container.setAttribute("data-bs-toggle", "modal");
+        container.setAttribute("data-bs-target", "#ModalSaving");
+        container.classList.add(
+          "border-main",
+          "background-secondary",
+          "text-main",
+          "d-flex",
+          "gap-2",
+          "flex-column",
+          "justify-content-center",
+          "align-items-center",
+          "py-2",
+          "pb-4"
+        );
+        //
+        container.addEventListener("click", () => {
+          console.log(items);
+        });
+        //
+        // Tạo phần tử chứa tiêu đề
+        const titleContainer = document.createElement("div");
+        const title = document.createElement("span");
+        title.classList.add("font-bold");
+        title.style.fontSize = "18px";
+        title.textContent = items.title;
+        titleContainer.appendChild(title);
+        container.appendChild(titleContainer);
+
+        // Tạo phần tử thanh ngang
+        const line = document.createElement("div");
+        line.classList.add("background-main");
+        line.style.width = "80px";
+        line.style.height = "2px";
+        container.appendChild(line);
+
+        // Tạo phần tử chứa thông tin
+        const infoContainer = document.createElement("div");
+        infoContainer.classList.add(
+          "d-flex",
+          "w-100",
+          "px-3",
+          "text-small",
+          "font-bold"
+        );
+
+        // Tạo phần tử chứa thông tin bên trái
+        const leftContainer = document.createElement("div");
+        leftContainer.classList.add("w-50", "d-flex", "flex-column", "gap-3");
+
+        // Tạo phần tử chứa thông tin 'Total HELI sent'
+        const heliSentContainer = document.createElement("div");
+        heliSentContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const heliSentLabel = document.createElement("span");
+        heliSentLabel.textContent = "Total HELI sent";
+        const heliSentValue = document.createElement("span");
+        heliSentValue.classList.add("text-white", "text-base");
+        heliSentValue.textContent = items.Total_HELI_sent;
+        heliSentContainer.appendChild(heliSentLabel);
+        heliSentContainer.appendChild(heliSentValue);
+        leftContainer.appendChild(heliSentContainer);
+
+        // Tạo phần tử chứa thông tin 'Total profit'
+        const totalProfitContainer = document.createElement("div");
+        totalProfitContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const totalProfitLabel = document.createElement("span");
+        totalProfitLabel.textContent = "Total profit";
+        const totalProfitValue = document.createElement("span");
+        totalProfitValue.classList.add("text-white", "text-base");
+        totalProfitValue.textContent = items.Total_profit;
+        totalProfitContainer.appendChild(totalProfitLabel);
+        totalProfitContainer.appendChild(totalProfitValue);
+        leftContainer.appendChild(totalProfitContainer);
+
+        infoContainer.appendChild(leftContainer);
+
+        // Tạo phần tử chứa thông tin bên phải
+        const rightContainer = document.createElement("div");
+        rightContainer.classList.add("w-50", "d-flex", "flex-column", "gap-3");
+
+        // Tạo phần tử chứa thông tin 'Interest rate'
+        const interestRateContainer = document.createElement("div");
+        interestRateContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const interestRateLabel = document.createElement("span");
+        interestRateLabel.textContent = "Interest rate";
+        const interestRateValue = document.createElement("span");
+        interestRateValue.classList.add("text-base");
+        interestRateValue.textContent = items.Interest_rate;
+        interestRateContainer.appendChild(interestRateLabel);
+        interestRateContainer.appendChild(interestRateValue);
+        rightContainer.appendChild(interestRateContainer);
+
+        // Tạo phần tử chứa thông tin 'Total submissions'
+        const totalSubmissionsContainer = document.createElement("div");
+        totalSubmissionsContainer.classList.add(
+          "d-flex",
+          "flex-column",
+          "gap-3"
+        );
+        const totalSubmissionsLabel = document.createElement("span");
+        totalSubmissionsLabel.textContent = "Total submissions";
+        const totalSubmissionsValue = document.createElement("span");
+        totalSubmissionsValue.classList.add("text-white", "text-base");
+        totalSubmissionsValue.textContent = items.Total_submissions;
+        totalSubmissionsContainer.appendChild(totalSubmissionsLabel);
+        totalSubmissionsContainer.appendChild(totalSubmissionsValue);
+        rightContainer.appendChild(totalSubmissionsContainer);
+
+        infoContainer.appendChild(rightContainer);
+
+        container.appendChild(infoContainer);
+
+        loadSaving.appendChild(container);
+      });
+    }
+
+    getPack();
+  </script>
+</html>

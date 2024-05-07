@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="stylesheet" href="./js/package/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body  style="background-color: rgb(17, 13, 0)">
+    <header>
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center" onclick="window.history.go(-1)">
+          <ion-icon
+            class="text-main"
+            style="width: 24px; height: 24px"
+            name="chevron-back"
+          ></ion-icon>
+        </div>
+        <div class="">
+          <span class="text-main font-bold" style="font-size: 24px"
+            >LANGUAGE</span
+          >
+        </div>
+        <div class="">
+          <span class="text-black" style="width: 24px">----</span>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+
+    <article
+      class="d-flex flex-column justify-content-between section-container"
+      style="height: 90vh"
+    >
+      <section class="d-flex flex-column gap-3">
+        <button
+          id="en"
+          style="
+            border: 1px solid rgb(254, 232, 76);
+            border-radius: 14px;
+            text-align: start;
+          "
+        >
+          English
+        </button>
+        <button
+          id="vi"
+          style="
+            border: 1px solid rgb(254, 232, 76);
+            border-radius: 14px;
+            text-align: start;
+          "
+        >
+          Vietnamese
+        </button>
+      </section>
+
+      <button
+        onclick="Save()"
+        class="background-main py-3 w-100"
+        style="border: none; border-radius: 24px"
+      >
+        Save
+      </button>
+    </article>
+  </body>
+
+  <script>
+    const en = document.getElementById("en");
+    const vi = document.getElementById("vi");
+    let lang;
+
+    if (localStorage.getItem("lang") == 'en') {
+      en.classList.add("background-main", "px-3", "w-100", "py-3");
+      vi.classList.add(
+        "background-secondary",
+        "px-3",
+        "py-3",
+        "w-100",
+        "text-main"
+      );
+    } else {
+      vi.classList.add("background-main", "px-3", "w-100", "py-3");
+      en.classList.add(
+        "background-secondary",
+        "px-3",
+        "py-3",
+        "w-100",
+        "text-main"
+      );
+    }
+
+    //
+    en.addEventListener("click", () => {
+      //   localStorage.setItem("lang", en);
+      lang = "en";
+
+      en.className = "";
+      vi.className = "";
+      en.classList.add("background-main", "px-3", "w-100", "py-3");
+      vi.classList.add(
+        "background-secondary",
+        "px-3",
+        "py-3",
+        "w-100",
+        "text-main"
+      );
+    });
+    vi.addEventListener("click", () => {
+      //   localStorage.setItem("lang", vi);
+      lang = "vi";
+
+      vi.className = "";
+      en.className = "";
+      vi.classList.add("background-main", "px-3", "w-100", "py-3");
+      en.classList.add(
+        "background-secondary",
+        "px-3",
+        "py-3",
+        "w-100",
+        "text-main"
+      );
+    });
+
+    function Save() {
+      console.log(lang);
+      localStorage.setItem("lang", lang);
+    }
+  </script>
+</html>

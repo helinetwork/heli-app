@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit profile - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="stylesheet" href="./js/package/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      input:focus {
+        background-color: rgba(254, 232, 76, 0.16) !important;
+      }
+    </style>
+  </head>
+  <body class=""  style="background-color: rgb(17, 13, 0)">
+    <header>
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center" onclick="window.history.go(-1)">
+          <ion-icon
+            class="text-main"
+            style="width: 24px; height: 24px"
+            name="chevron-back"
+          ></ion-icon>
+        </div>
+        <div class="">
+          <span class="text-main font-bold" style="font-size: 24px"
+            >PROFILE</span
+          >
+        </div>
+        <div class="">
+          <span class="text-black" style="width: 24px">----</span>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+
+    <article class="d-flex flex-column gap-3 section-container">
+      <section style="position: relative">
+        <img
+          src="/image/card_platinum.png"
+          style="
+            width: 120px;
+            height: 120px;
+            border-radius: 100%;
+            border: 1px solid white;
+          "
+          alt=""
+        />
+        <ion-icon
+          class="border rounded-circle p-2 bg-white text-main font-bold"
+          style="position: absolute; left: 100px; top: 40px"
+          name="pencil-outline"
+        ></ion-icon>
+      </section>
+      <section
+        class="d-flex flex-grow-1 flex-column justify-content-between"
+        style="height: 70vh"
+      >
+        <div class="d-flex flex-column gap-3 text-secondary">
+          <div class="d-flex flex-column text-normal">
+            <span>Name *</span>
+            <input
+              type="text"
+              id="fullName"
+              class="background-primary p-3 text-white mt-2"
+              style="
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+              "
+              placeholder="Nhats"
+            />
+            <span style="display: none; color: rgb(255, 76, 57)" id="validName"
+              >Full Name invalid</span
+            >
+          </div>
+          <div class="d-flex flex-column text-normal">
+            <span>Email</span>
+            <input
+              id="email"
+              type="email"
+              class="background-primary p-3 text-white mt-2"
+              style="
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+              "
+              placeholder="email@gmail.com"
+            />
+            <span style="display: none; color: rgb(255, 76, 57)" id="validEmail"
+              >Email invalid</span
+            >
+          </div>
+          <div class="d-flex flex-column text-normal">
+            <span>Your friend’s Referral Code</span>
+            <input
+              id="code"
+              type="text"
+              class="background-primary p-3 text-white mt-2"
+              style="
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+              "
+              placeholder="0XBYC"
+            />
+          </div>
+        </div>
+        <div class="d-flex flex-column gap-3">
+          <button
+            class="w-100 background-main py-3"
+            style="border-radius: 24px; border: none"
+            onclick="AddAccount()"
+          >
+            Save
+          </button>
+          <button
+            class="w-100 background-primary py-3"
+            style="border-radius: 24px; border: none; color: rgb(255, 76, 57)"
+          >
+            Delete your account
+          </button>
+        </div>
+      </section>
+    </article>
+  </body>
+
+  <script>
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    function AddAccount() {
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const code = document.getElementById("code").value;
+      const validEmail = document.getElementById("validEmail");
+      if (fullName == "" || email == "") {
+        validEmail.style.display = email == "" ? "block" : "none";
+        const validName = (document.getElementById("validName").style.display =
+          fullName == "" ? "block" : "none");
+      } else {
+        if (regex.test(email)) {
+          const account = {
+            fullName: fullName,
+            email: email,
+            code: code,
+          };
+          // set account vào local
+          // localStorage.setItem('account',account)
+
+          console.log(account);
+        } else {
+          validEmail.style.display = "block";
+        }
+      }
+    }
+  </script>
+</html>

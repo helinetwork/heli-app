@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="stylesheet" href="./js/package/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="screen" style="background-color: black">
+     <!--  -->
+     <header class="section-container">
+      <section class="d-flex justify-content-between align-items-center">
+        <a style="text-decoration: none;" href="profile.html" class="d-flex gap-3 align-items-center">
+          <div class="">
+            <img
+              style="width: 40px; height: 40px; object-fit: cover"
+              src="./image/Avatar.png"
+              alt=""
+            />
+          </div>
+          <div  class="d-flex flex-column">
+            <span style="color: white" id="fullName"></span>
+            <span class="text-main" id="rank"></span>
+          </div>
+        </a>
+        <div class="" style="display: flex; gap: 12px">
+          <a
+            href="profile.html"
+            class=""
+            style="
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 100%;
+            "
+          >
+            <ion-icon
+              style="width: 22px; height: 22px; object-fit: cover; color: white"
+              name="settings-outline"
+            ></ion-icon>
+          </a>
+          <a
+            href="notify.html"
+            class=""
+            style="
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 100%;
+            "
+          >
+            <ion-icon
+              style="width: 22px; height: 22px; object-fit: cover; color: white"
+              name="notifications-outline"
+            ></ion-icon>
+          </a>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+    <article class="section-container" style="padding-bottom: 100px">
+      <!-- Welcome -->
+      <section class="d-flex flex-column text-main">
+        <span style="font-weight: 500">Welcome to</span>
+        <span style="font-size: 48px; font-weight: 700">Heli Chain</span>
+      </section>
+      <!-- Swiper -->
+      <section class="my-2"  style="position: relative;">
+        <section>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="border-radius: 20px;">
+                <img src="./image/card_platinum.png" alt="" />
+              </div>
+              <div class="swiper-slide"  style="border-radius: 20px;">
+                <img src="./image/card_platinum.png" alt="" />
+              </div>
+              <div class="swiper-slide"  style="border-radius: 20px;">
+                <img src="./image/card_platinum.png" alt="" />
+              </div>
+            </div>
+          </div>
+         
+        </section>
+        
+        <div class="swiper-pagination" style="position: absolute; bottom: 53%;"></div>
+      <!-- Receive -->
+      <section
+        class="background-main d-flex justify-content-between p-3 align-items-center my-5"
+        style="border-radius: 14px"
+      >
+        <div class="d-flex flex-column">
+          <span style="font-size: 11px">STREAK</span>
+          <span style="font-size: 26px">30 days</span>
+        </div>
+        <div class="">
+          <button
+            class="text-main py-2 px-3"
+            style="
+              background-color: black;
+              border-radius: 50px;
+              font-size: 13px;
+              border: none;
+            "
+          >
+            Receive 5 HELI
+          </button>
+        </div>
+      </section>
+      <!-- Action -->
+      <section class="row row-cols-2">
+        <div class="">
+          <a href="mining.html"
+            class="border-main d-flex flex-column align-items-center justify-content-between background-secondary py-3 my-2 text-main"
+            style="font-size: 13px;text-decoration: none"
+          >
+            <ion-icon
+              style="width: 24px; height: 24px"
+              name="layers"
+            ></ion-icon>
+            <span>Be miner</span>
+          </a>
+        </div>
+        <div class="">
+          <div
+            class="border-main d-flex flex-column align-items-center justify-content-between background-secondary py-3 my-2 text-main"
+            style="font-size: 13px"
+          >
+            <ion-icon
+              style="width: 24px; height: 24px"
+              name="card-outline"
+            ></ion-icon>
+            <span>Swap</span>
+          </div>
+        </div>
+        <a href="ranking.html" style="text-decoration: none;" class="">
+          <div
+            class="border-main d-flex flex-column align-items-center justify-content-between background-secondary py-3 my-2 text-main"
+            style="font-size: 13px"
+          >
+            <ion-icon
+              style="width: 24px; height: 24px"
+              name="star-outline"
+            ></ion-icon>
+            <span>Ranking</span>
+          </div>
+        </a>
+        <a href="community.html" class="">
+          <div
+            class="border-main d-flex flex-column align-items-center justify-content-between background-secondary py-3 my-2 text-main"
+            style="font-size: 13px"
+          >
+            <ion-icon
+              style="width: 24px; height: 24px"
+              name="people-outline"
+            ></ion-icon>
+            <span>Community</span>
+          </div>
+        </a>
+      </section>
+      <!--  -->
+    </article>
+
+    <nav
+      class="fixed-bottom mx-auto"
+      style="background-color: rgb(28, 28, 28); max-width: 768px"
+    >
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <a
+          href="index.html"
+          class="text-main d-flex flex-column align-items-center"
+          style="text-decoration: none"
+        >
+          <span>Home</span>
+          <span
+            class="background-main"
+            style="width: 6px; height: 6px; border-radius: 100%"
+          ></span>
+        </a>
+        <a href="wallet.html" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="wallet"></ion-icon>
+        </a>
+        <a href="https://helichain.io/" target="_blank" class="text-secondary">
+          <img
+            src="./image/icon/Bitmap.png"
+            style="width: 50px; height: 50px; object-fit: cover"
+            alt=""
+          />
+        </a>
+        <a href="startMining.html" class="text-secondary d-flex align-items-end">
+          <img src="image/icon/mine.svg" alt="">
+        </a> 
+        <a href="ref.html" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="people"></ion-icon>
+        </a>
+      </section>
+    </nav>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./js/profile.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      loop:true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+</html>

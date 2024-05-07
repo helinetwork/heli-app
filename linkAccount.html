@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link account - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="stylesheet" href="./js/package/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      input:focus {
+        background-color: rgba(254, 232, 76, 0.16) !important;
+      }
+    </style>
+  </head>
+  <body  style="background-color: rgb(17, 13, 0)">
+    <header>
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center" onclick="window.history.go(-1)">
+          <ion-icon
+            class="text-main"
+            style="width: 24px; height: 24px"
+            name="chevron-back"
+          ></ion-icon>
+        </div>
+        <div class="">
+          <span class="text-main font-bold" style="font-size: 24px"
+            >LINK ACCOUNT</span
+          >
+        </div>
+        <div class="">
+          <span class="text-black" style="width: 24px">----</span>
+        </div>
+      </section>
+    </header>
+
+    <article
+      class="section-container d-flex flex-column justify-content-between"
+      style="height: 90vh"
+    >
+      <section class="d-flex flex-column gap-3 text-secondary">
+        <div class="d-flex flex-column text-normal">
+          <span>Email</span>
+          <input
+            id="email"
+            type="email"
+            class="background-primary p-3 text-white mt-2"
+            style="
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              border-radius: 8px;
+            "
+            placeholder="email@gmail.com"
+          />
+          <span style="display: none; color: rgb(255, 76, 57)" id="validEmail"
+            >Email invalid</span
+          >
+        </div>
+
+        <!-- Twitter -->
+        <div class="d-flex flex-column text-normal">
+          <span>Twitter</span>
+          <input
+            id="twitter"
+            type="text"
+            class="background-primary p-3 text-white mt-2"
+            style="
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              border-radius: 8px;
+            "
+            placeholder="Connect with Twitter"
+          />
+        </div>
+        <!-- Telegram -->
+        <div class="d-flex flex-column text-normal">
+          <span>Telegram</span>
+          <input
+            id="telegram"
+            type="text"
+            class="background-primary p-3 text-white mt-2"
+            style="
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              border-radius: 8px;
+            "
+            placeholder="Connect with Telegram"
+          />
+        </div>
+      </section>
+      <section>
+        <button
+        onclick="addLink()"
+          class="background-main w-100 py-3"
+          style="border: none; border-radius: 24px"
+        >
+          Save
+        </button>
+      </section>
+    </article>
+  </body>
+
+
+  <script>
+    const email = document.getElementById('email').value 
+    const tiwtter = document.getElementById('twitter').value
+    const telegram = document.getElementById('telegram').value
+
+
+    function addLink () {
+        const link = {
+            email:email,
+            tiwtter:tiwtter,
+            telegram:telegram
+        }
+
+        localStorage.setItem('link',link)
+    }
+  </script>
+</html>

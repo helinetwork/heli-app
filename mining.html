@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- More -->
+    <link
+      href="css/package/fastbootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .progress-bar {
+        background-color: black !important;
+      }
+    </style>
+  </head>
+  <body class="mx-auto" style="background-color: rgb(17, 13, 0)">
+    <header>
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center" onclick="window.history.go(-1)">
+          <ion-icon
+            class="text-main"
+            style="width: 24px; height: 24px"
+            name="chevron-back"
+          ></ion-icon>
+        </div>
+        <div class="">
+          <span class="text-main font-bold" style="font-size: 24px"
+            >MINING</span
+          >
+        </div>
+        <div class="">
+          <span class="text-black" style="width: 24px">----</span>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+    <aside class="section-container">
+      <div class="background-main p-3 d-flex" style="border-radius: 14px">
+        <div
+          class="w-50 d-flex flex-column align-items-center"
+          style="border-right: 0.01px solid lightgrey"
+        >
+          <span class="text-small font-semibold">AVAILABLE BALANCE</span>
+          <span class="font-bold" style="font-size: 20px">50.00</span>
+        </div>
+        <div class="w-50 d-flex flex-column align-items-center">
+          <span class="text-small font-semibold">LOCKED BALANCE</span>
+          <span class="font-bold" style="font-size: 20px">50.00</span>
+        </div>
+      </div>
+    </aside>
+
+    <article class="section-container">
+      <ul
+        class="nav nav-tabs nav-fill d-flex justify-content-between"
+        role="tablist"
+      >
+        <li
+          class="nav-item text-small"
+          style="max-width: 200px"
+          role="presentation"
+        >
+          <a
+            onclick="getPack()"
+            style="font-size: 12px"
+            class="nav-link active py-2"
+            id="simple-tab-0"
+            data-bs-toggle="tab"
+            href="#simple-tabpanel-0"
+            role="tab"
+            aria-controls="simple-tabpanel-0"
+            aria-selected="true"
+            >Buy Package</a
+          >
+        </li>
+        <li class="nav-item" style="max-width: 200px" role="presentation">
+          <a
+            onclick="getMyPack()"
+            class="nav-link text-small py-2"
+            style="font-size: 12px"
+            id="simple-tab-1"
+            data-bs-toggle="tab"
+            href="#simple-tabpanel-1"
+            role="tab"
+            aria-controls="simple-tabpanel-1"
+            aria-selected="false"
+            >My Packages</a
+          >
+        </li>
+        <li class="nav-item" style="max-width: 200px" role="presentation">
+          <a
+            onclick="loadData()"
+            class="nav-link text-small py-2"
+            id="simple-tab-2"
+            style="font-size: 12px"
+            data-bs-toggle="tab"
+            href="#simple-tabpanel-2"
+            role="tab"
+            aria-controls="simple-tabpanel-2"
+            aria-selected="false"
+            >History</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content pt-5" id="tab-content">
+        <div
+          class="tab-pane active d-flex flex-column gap-3"
+          id="simple-tabpanel-0"
+          role="tabpanel"
+          aria-labelledby="simple-tab-0"
+        ></div>
+        <div
+          class="tab-pane d-flex flex-column gap-3"
+          id="simple-tabpanel-1"
+          role="tabpanel"
+          aria-labelledby="simple-tab-1"
+        ></div>
+        <div
+          class="tab-pane"
+          id="simple-tabpanel-2"
+          role="tabpanel"
+          aria-labelledby="simple-tab-2"
+        >
+          Tab 3 selected
+        </div>
+      </div>
+    </article>
+<!-- Modal -->
+    <div
+      class="modal fade"
+      id="BOOSTER"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-black" style="border-radius: 14px">
+          <div class="modal-body d-flex flex-column gap-4">
+            <div
+              class="d-flex flex-column gap-3 text-main font-bold justify-content-center align-items-center"
+              style="font-size: 12px"
+            >
+              <span id="titleModal">BUY HELI 1</span>
+              <span class="text-white"
+                >Do you want to buy HELI 1 with 100$ ?</span
+              >
+            </div>
+            <div class="d-flex gap-2 px-4">
+              <button
+                type="button"
+                class="background-secondary text-main font-bold w-50 py-2"
+                data-bs-dismiss="modal"
+                style="font-size: 12px; border-radius: 24px; border: none"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="w-50 background-main text-black py-2"
+                style="font-size: 12px; border-radius: 24px; border: none"
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+  </body>
+  <script src="/js/package/bootstrapfast.min.js"></script>
+  <script>
+    const loadSaving = document.getElementById("simple-tabpanel-0");
+    const loadMyPack = document.getElementById("simple-tabpanel-1");
+    const loadHistory = document.getElementById("simple-tabpanel-2");
+  </script>
+  <script>
+    const dataBuy = [
+      {
+        id: 124,
+        title: "HELI 1",
+        Total_HELI_sent: "400%",
+        Total_profit: "30 months",
+        Interest_rate: "8%",
+        Total_submissions: "$ 100.000",
+        buy: 50,
+      },
+      {
+        id: 121,
+        title: "HELI 2",
+        Total_HELI_sent: "100",
+        Total_profit: "30",
+        Interest_rate: "14%",
+        Total_submissions: "120",
+        buy: 100,
+      },
+    ];
+
+    async function getPack() {
+      loadSaving.innerText = "";
+      loadHistory.innerText = "";
+      loadMyPack.innerText = "";
+      dataBuy.forEach((items, index) => {
+        const container = document.createElement("div");
+        // container.setAttribute("type", "button");
+        // container.setAttribute("data-bs-toggle", "modal");
+        // container.setAttribute("data-bs-target", "#ModalSaving");
+        container.classList.add(
+          "text-black",
+          "d-flex",
+          "gap-2",
+          "flex-column",
+          "justify-content-center",
+          "align-items-center",
+          "py-2",
+          "pb-4"
+        );
+        container.style.backgroundImage =
+          index == 0
+            ? "linear-gradient(180deg, rgb(165, 255, 192), rgb(76, 239, 152))"
+            : index == 1
+            ? "linear-gradient(180deg, rgb(3, 207, 224), rgb(85, 255, 233))"
+            : "linear-gradient(180deg, rgb(3, 207, 224), rgb(85, 255, 233))";
+        container.style.borderRadius = "14px";
+        //
+        container.addEventListener("click", () => {
+          console.log(items);
+        });
+        //
+        // Tạo phần tử chứa tiêu đề
+        const titleContainer = document.createElement("div");
+        const title = document.createElement("span");
+        title.classList.add("font-bold");
+        title.style.fontSize = "18px";
+        title.textContent = items.title;
+        titleContainer.appendChild(title);
+        container.appendChild(titleContainer);
+
+        // Tạo phần tử thanh ngang
+        const line = document.createElement("div");
+        line.classList.add("bg-black");
+        line.style.width = "80px";
+        line.style.height = "2px";
+        container.appendChild(line);
+
+        // Tạo phần tử chứa thông tin
+        const infoContainer = document.createElement("div");
+        infoContainer.classList.add(
+          "d-flex",
+          "w-100",
+          "px-3",
+          "text-small",
+          "font-bold"
+        );
+
+        // Tạo phần tử chứa thông tin bên trái
+        const leftContainer = document.createElement("div");
+        leftContainer.classList.add("w-50", "d-flex", "flex-column", "gap-3");
+
+        // Tạo phần tử chứa thông tin 'Total HELI sent'
+        const heliSentContainer = document.createElement("div");
+        heliSentContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const heliSentLabel = document.createElement("span");
+        heliSentLabel.textContent = "Max out";
+        const heliSentValue = document.createElement("span");
+        heliSentValue.classList.add("text-base");
+        heliSentValue.textContent = items.Total_HELI_sent;
+        heliSentContainer.appendChild(heliSentLabel);
+        heliSentContainer.appendChild(heliSentValue);
+        leftContainer.appendChild(heliSentContainer);
+
+        // Tạo phần tử chứa thông tin 'Total profit'
+        const totalProfitContainer = document.createElement("div");
+        totalProfitContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const totalProfitLabel = document.createElement("span");
+        totalProfitLabel.textContent = "Mining month";
+        const totalProfitValue = document.createElement("span");
+        totalProfitValue.classList.add("text-base");
+        totalProfitValue.textContent = items.Total_profit;
+        totalProfitContainer.appendChild(totalProfitLabel);
+        totalProfitContainer.appendChild(totalProfitValue);
+        leftContainer.appendChild(totalProfitContainer);
+
+        infoContainer.appendChild(leftContainer);
+
+        // Tạo phần tử chứa thông tin bên phải
+        const rightContainer = document.createElement("div");
+        rightContainer.classList.add("w-50", "d-flex", "flex-column", "gap-3");
+
+        // Tạo phần tử chứa thông tin 'Interest rate'
+        const interestRateContainer = document.createElement("div");
+        interestRateContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const interestRateLabel = document.createElement("span");
+        interestRateLabel.textContent = "Interest rate";
+        const interestRateValue = document.createElement("span");
+        interestRateValue.classList.add("text-base");
+        interestRateValue.textContent = items.Interest_rate;
+        interestRateContainer.appendChild(interestRateLabel);
+        interestRateContainer.appendChild(interestRateValue);
+        rightContainer.appendChild(interestRateContainer);
+
+        // Tạo phần tử chứa thông tin 'Total submissions'
+        const totalSubmissionsContainer = document.createElement("div");
+        totalSubmissionsContainer.classList.add(
+          "d-flex",
+          "flex-column",
+          "gap-3"
+        );
+        const totalSubmissionsLabel = document.createElement("span");
+        totalSubmissionsLabel.textContent = "Total profit";
+        const totalSubmissionsValue = document.createElement("span");
+        totalSubmissionsValue.classList.add("text-base");
+        totalSubmissionsValue.textContent = items.Total_submissions;
+        totalSubmissionsContainer.appendChild(totalSubmissionsLabel);
+        totalSubmissionsContainer.appendChild(totalSubmissionsValue);
+        rightContainer.appendChild(totalSubmissionsContainer);
+
+        // Tạo button BUY
+        const buyDIV = document.createElement("div");
+        buyDIV.classList.add("w-100", "px-3");
+        const buttonBuy = document.createElement("button");
+        buttonBuy.classList.add("w-100", "py-2", "bg-black");
+        buttonBuy.style.color = "white";
+        buttonBuy.style.borderRadius = "14px";
+        buttonBuy.innerText = `${items.buy} USTD`;
+        //  data-bs-toggle="modal" data-bs-target="#BOOSTER"
+        buttonBuy.setAttribute('data-bs-toggle','modal')
+        buttonBuy.setAttribute('data-bs-target','#BOOSTER')
+        buttonBuy.addEventListener('click', ()=>{
+          const titleModal = document.getElementById('titleModal')
+          titleModal.innerText = `BUY ${items.title.toLocaleUpperCase()}`
+        })
+        buyDIV.appendChild(buttonBuy);
+
+        infoContainer.appendChild(rightContainer);
+
+        container.appendChild(infoContainer);
+        container.appendChild(buyDIV);
+
+        loadSaving.appendChild(container);
+      });
+    }
+
+    getPack();
+  </script>
+  <script>
+    const dataMy = [
+      {
+        id: 124,
+        title: "HELI 1",
+        Date_purchased: "30/04/2024",
+        Date_end: "30/04/2025",
+        Interest_rate: "8%",
+        Total_profit: "120",
+      },
+    ];
+
+    async function getMyPack() {
+      loadMyPack.innerText = "";
+      loadSaving.innerText = "";
+      loadHistory.innerText = "";
+      dataMy.forEach((items, index) => {
+        const container = document.createElement("div");
+        // container.setAttribute("type", "button");
+        // container.setAttribute("data-bs-toggle", "modal");
+        // container.setAttribute("data-bs-target", "#ModalSaving");
+        container.classList.add(
+          "background-secondary",
+          "text-black",
+          "d-flex",
+          "gap-2",
+          "flex-column",
+          "justify-content-center",
+          "align-items-center",
+          "py-2",
+          "pb-4"
+        );
+        container.style.backgroundImage =
+          index == 0
+            ? "linear-gradient(180deg, rgb(165, 255, 192), rgb(76, 239, 152))"
+            : index == 1
+            ? "linear-gradient(180deg, rgb(3, 207, 224), rgb(85, 255, 233))"
+            : "linear-gradient(180deg, rgb(3, 207, 224), rgb(85, 255, 233))";
+        container.style.borderRadius = "14px";
+        //
+        container.addEventListener("click", () => {
+          console.log(items);
+        });
+        //
+        // Tạo phần tử chứa tiêu đề
+        const titleContainer = document.createElement("div");
+        const title = document.createElement("span");
+        title.classList.add("font-bold");
+        title.style.fontSize = "18px";
+        title.textContent = items.title;
+        titleContainer.appendChild(title);
+        container.appendChild(titleContainer);
+
+        // Tạo phần tử thanh ngang
+        const line = document.createElement("div");
+        line.classList.add("bg-black");
+        line.style.width = "80px";
+        line.style.height = "2px";
+        container.appendChild(line);
+
+        // Tạo phần tử chứa thông tin
+        const infoContainer = document.createElement("div");
+        infoContainer.classList.add(
+          "d-flex",
+          "w-100",
+          "px-3",
+          "text-small",
+          "font-bold"
+        );
+
+        // Tạo phần tử chứa thông tin bên trái
+        const leftContainer = document.createElement("div");
+        leftContainer.classList.add("w-50", "d-flex", "flex-column", "gap-3");
+
+        // Tạo phần tử chứa thông tin 'Total HELI sent'
+        const heliSentContainer = document.createElement("div");
+        heliSentContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const heliSentLabel = document.createElement("span");
+        heliSentLabel.textContent = "Date purchased";
+        const heliSentValue = document.createElement("span");
+        heliSentValue.classList.add("text-base");
+        heliSentValue.textContent = items.Date_purchased;
+        heliSentContainer.appendChild(heliSentLabel);
+        heliSentContainer.appendChild(heliSentValue);
+        leftContainer.appendChild(heliSentContainer);
+
+        // Tạo phần tử chứa thông tin 'Total profit'
+        const totalProfitContainer = document.createElement("div");
+        totalProfitContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const totalProfitLabel = document.createElement("span");
+        totalProfitLabel.textContent = "Interest rate";
+        const totalProfitValue = document.createElement("span");
+        totalProfitValue.classList.add("text-base");
+        totalProfitValue.textContent = items.Interest_rate;
+        totalProfitContainer.appendChild(totalProfitLabel);
+        totalProfitContainer.appendChild(totalProfitValue);
+        leftContainer.appendChild(totalProfitContainer);
+
+        infoContainer.appendChild(leftContainer);
+
+        // Tạo phần tử chứa thông tin bên phải
+        const rightContainer = document.createElement("div");
+        rightContainer.classList.add("w-50", "d-flex", "flex-column", "gap-3");
+
+        // Tạo phần tử chứa thông tin 'Interest rate'
+        const interestRateContainer = document.createElement("div");
+        interestRateContainer.classList.add("d-flex", "flex-column", "gap-3");
+        const interestRateLabel = document.createElement("span");
+        interestRateLabel.textContent = "Date end";
+        const interestRateValue = document.createElement("span");
+        interestRateValue.classList.add("text-base");
+        interestRateValue.textContent = items.Date_end;
+        interestRateContainer.appendChild(interestRateLabel);
+        interestRateContainer.appendChild(interestRateValue);
+        rightContainer.appendChild(interestRateContainer);
+
+        // Tạo phần tử chứa thông tin 'Total submissions'
+        const totalSubmissionsContainer = document.createElement("div");
+        totalSubmissionsContainer.classList.add(
+          "d-flex",
+          "flex-column",
+          "gap-3"
+        );
+        const totalSubmissionsLabel = document.createElement("span");
+        totalSubmissionsLabel.textContent = "Total profit";
+        const totalSubmissionsValue = document.createElement("span");
+        totalSubmissionsValue.classList.add("text-base");
+        totalSubmissionsValue.textContent = items.Total_profit;
+        totalSubmissionsContainer.appendChild(totalSubmissionsLabel);
+        totalSubmissionsContainer.appendChild(totalSubmissionsValue);
+        rightContainer.appendChild(totalSubmissionsContainer);
+
+        //
+        const DIVprogress = document.createElement("div");
+        //
+        DIVprogress.classList.add("px-3", "w-100");
+        const progessDiv = document.createElement("div");
+        progessDiv.classList.add("progress", "w-100");
+        progessDiv.setAttribute("role", "progressbar");
+        progessDiv.setAttribute("aria-valuemin", "0");
+        progessDiv.setAttribute("aria-valuemax", "100");
+        progessDiv.setAttribute("aria-valuenow", "25");
+        progessDiv.style.height = "8px";
+
+        const progress_bar = document.createElement("div");
+        progress_bar.style.width = "25%";
+        progress_bar.classList.add("progress-bar");
+        progessDiv.appendChild(progress_bar);
+
+        const spanDiv = document.createElement("div");
+        spanDiv.classList.add(
+          "d-flex",
+          "justify-content-between",
+          "text-small",
+          "w-100",
+          "px-3",
+          "font-bold"
+        );
+        const persent = document.createElement("span");
+        persent.innerText = "100%";
+        const amout = document.createElement("span");
+        amout.innerText = "1.000.000";
+        //
+        spanDiv.appendChild(persent);
+        spanDiv.appendChild(amout);
+        // progessDiv.appendChild(spanDiv);
+        //
+        DIVprogress.appendChild(progessDiv);
+
+        //
+        infoContainer.appendChild(rightContainer);
+
+        container.appendChild(infoContainer);
+        container.appendChild(DIVprogress);
+        container.appendChild(spanDiv);
+
+        loadMyPack.appendChild(container);
+      });
+    }
+  </script>
+
+  <script>
+    const data = [
+      {
+        id: 123453,
+        date: "18/04/2024",
+        items: [
+          {
+            id: 3545,
+            title: "Swap",
+            toAdress: "",
+            total: "+ 1,600.82 HELI",
+          },
+          {
+            id: 3545,
+            title: "Sent",
+            toAdress: "To 0x8601...9718",
+            total: "+ 1,600.82 HELI",
+          },
+        ],
+      },
+      {
+        id: 123453,
+        date: "19/04/2024",
+        items: [
+          {
+            id: 3545,
+            title: "Swap",
+            toAdress: "",
+            total: "+ 1,600.82 HELI",
+          },
+          {
+            id: 3545,
+            title: "Sent",
+            toAdress: "To 0x8601...9718",
+            total: "+ 1,600.82 HELI",
+          },
+        ],
+      },
+    ];
+
+    async function loadData() {
+      loadHistory.innerText = "";
+      loadMyPack.innerText = "";
+      loadSaving.innerText = "";
+      data.forEach((items) => {
+        const containerDIV = document.createElement("div");
+        containerDIV.classList.add("d-flex", "flex-column", "gap-2", "py-3");
+        // date
+        const titleDate = document.createElement("span");
+        titleDate.classList.add("text-secondary", "text-small");
+        titleDate.innerText = items.date;
+
+        // div items
+        const DIVchild = document.createElement("div");
+        DIVchild.classList.add("d-flex", "flex-column", "gap-2");
+        items.items.map((e) => {
+          const mainDiv = document.createElement("div");
+          mainDiv.classList.add("d-flex", "gap-2");
+
+          // Tạo phần tử div chứa hình ảnh
+          const imageDiv = document.createElement("div");
+          const image = document.createElement("img");
+          image.style.width = "40px";
+          image.style.height = "40px";
+          image.style.objectFit = "cover";
+          image.style.borderRadius = "100%";
+          image.src = "/image/Avatar.png";
+          image.alt = "";
+          imageDiv.appendChild(image);
+          mainDiv.appendChild(imageDiv);
+
+          // Tạo phần tử div chứa thông tin
+          const infoDiv = document.createElement("div");
+          infoDiv.classList.add(
+            "d-flex",
+            "flex-grow-1",
+            "justify-content-between",
+            "align-items-end",
+            "text-white"
+          );
+
+          // Tạo phần tử div chứa thông tin số tiền HELI và USD
+          const amountDiv = document.createElement("div");
+          amountDiv.classList.add("d-flex", "flex-column");
+          const heliAmountSpan = document.createElement("span");
+          heliAmountSpan.classList.add("text-normal", "mt-1");
+          heliAmountSpan.textContent = e.title;
+          const dollarAmountSpan = document.createElement("span");
+          dollarAmountSpan.classList.add("text-small");
+          dollarAmountSpan.textContent = e.toAdress ? e.toAdress : "---";
+          amountDiv.appendChild(heliAmountSpan);
+          amountDiv.appendChild(dollarAmountSpan);
+          infoDiv.appendChild(amountDiv);
+
+          // Tạo phần tử div chứa thông tin tổng số tiền
+          const totalAmountDiv = document.createElement("div");
+          const totalAmountSpan = document.createElement("span");
+          totalAmountSpan.classList.add(
+            "text-normal",
+            "text-success",
+            "font-semibold"
+          );
+          totalAmountSpan.textContent = e.total;
+          totalAmountDiv.appendChild(totalAmountSpan);
+          infoDiv.appendChild(totalAmountDiv);
+
+          mainDiv.appendChild(infoDiv);
+          DIVchild.appendChild(mainDiv);
+        });
+        containerDIV.appendChild(titleDate);
+        containerDIV.appendChild(DIVchild);
+        loadHistory.appendChild(containerDIV);
+      });
+    }
+  </script>
+</html>

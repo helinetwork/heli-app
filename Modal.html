@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="./js/package/bootstrap.bundle.min.js"></script>
+    <script src="./js/package/swiper-element-bundle.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#DEPOSIT"
+    >
+      Launch demo modal
+    </div>
+
+    <!-- Modal DEPOSIT -->
+    <div
+      class="modal fade background-secondary"
+      id="DEPOSIT"
+      tabindex="-1"
+      aria-labelledby="DEPOSIT"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content"
+          style="border-radius: 14px; background-color: black"
+        >
+          <div class="modal-body d-flex flex-column gap-2">
+            <section>
+              <span class="text-main">DEPOSIT</span>
+            </section>
+            <section class="d-flex flex-column gap-3">
+              <!-- Token -->
+              <div class="text-white" style="position: relative">
+                <span class="text-small">Choose token</span>
+                <div
+                  class="background-secondary mt-2"
+                  id="select"
+                  style="
+                    position: relative;
+                    border-radius: 8px;
+                    cursor: pointer;
+                  "
+                >
+                  <div
+                    class="d-flex justify-content-between p-2 align-items-center"
+                    id="down"
+                  >
+                    <div class="d-flex gap-2 align-items-center text-small">
+                      <img
+                        style="width: 20px; height: 20px"
+                        src="./image/Avatar.png"
+                        alt=""
+                        id="selectIcon"
+                      />
+                      <span id="selectTitle">USTD</span>
+                    </div>
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                  </div>
+                </div>
+                <!--  -->
+                <div class="" id="listToken" style="display: none">
+                  <div
+                    class="background-secondary p-2 mt-2 d-flex flex-column gap-2 overflow-auto"
+                    style="border-radius: 8px; max-height: 80px; opacity: 0"
+                    id="coin"
+                  >
+                    <!--  -->
+                  </div>
+                </div>
+              </div>
+              <!-- Network -->
+              <div class="">
+                <div class="text-white">
+                  <span class="text-small">Choose Network</span>
+                  <div
+                    class="background-secondary mt-2"
+                    id="selectNetwork"
+                    style="border-radius: 8px; cursor: pointer"
+                  >
+                    <div
+                      class="d-flex justify-content-between p-2 align-items-center"
+                      id="downNetwork"
+                    >
+                      <div class="d-flex gap-2 align-items-center text-small">
+                        <span id="selectTitleNetwork">TRX - Tron (TRC20)</span>
+                      </div>
+                      <ion-icon name="caret-down-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <!--  -->
+                  <div class="" id="listNetwork" style="display: none">
+                    <div
+                      class="background-secondary p-2 mt-2 d-flex flex-column gap-2 overflow-auto text-small"
+                      style="border-radius: 8px; max-height: 80px"
+                      id="network"
+                    >
+                      <!--  -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- QR -->
+              <div class="">
+                <div
+                  class="background-secondary p-4 d-flex justify-content-between gap-3 align-items-center"
+                  style="border-radius: 8px"
+                >
+                  <div class="bg-white" style="width: 76px; height: 76px">
+                    <!-- QR -->
+                  </div>
+                  <div
+                    class="d-flex flex-grow-1 justify-content-between align-items-center"
+                  >
+                    <div
+                      class="d-flex flex-column gap-2 text-small text-secondary"
+                    >
+                      <span>Address</span>
+                      <span class="text-main">0xdabcnxmdb81</span>
+                    </div>
+                    <div class="">
+                      <ion-icon
+                        class="text-main font-bold"
+                        style="width: 16px; height: 16px"
+                        name="copy-outline"
+                      ></ion-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <button
+              type="button"
+              class="w-full background-main py-2 mt-3 text-small"
+              style="border: none; border-radius: 20px"
+              data-bs-dismiss="modal"
+            >
+              CONFIRM
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+  </body>
+</html>

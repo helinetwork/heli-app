@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <link rel="stylesheet" href="./js/package/bootstrap.bundle.min.js" />
+    <link rel="stylesheet" href="./js/package/swiper-element-bundle.min.js" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Thêm thư viện Google Sign-In -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+    <script>
+    var googleUser = {};
+    var startApp = function() {
+      gapi.load('auth2', function(){
+        // Retrieve the singleton for the GoogleAuth library and set up the client.
+        auth2 = gapi.auth2.init({
+          client_id: '214580443304-plik3nt62rjd0kdc5outbhcduf7o8pbd.apps.googleusercontent.com',
+          // cookiepolicy: 'single_host_origin',
+          // Request scopes in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+            plugin_name: "chat"
+        });
+        attachSignin(document.getElementById('continute'));
+      });
+    };
+
+    function attachSignin(element) {
+      console.log(element.id);
+      auth2.attachClickHandler(element, {},
+          function(googleUser) {
+            onSignedIn(googleUser);
+          }, function(error) {
+            console.log(error);
+            // alert(JSON.stringify(error, undefined, 2));
+          });
+    }
+
+    //*LOGIN THÀNH CÔNG
+    function onSignedIn(googleUser) {
+      console.log(googleUser.getAuthResponse());
+
+      window.location.replace('/index.html');
+    }
+    </script>
+  </head>
+  <body class="screen" style="background-color: black">
+    <section
+      class="d-flex flex-column justify-content-between py-5"
+      style="height: 100vh"
+    >
+      <header
+        class=""
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 40vh;
+          justify-content: end;
+        "
+      >
+        <img id="image" src="./image/sADlpb44uKuhmaGELGlzRIG5sw.png" alt="" />
+      </header>
+      <article class="px-4">
+        <div class="text-main">
+          <p style="font-size: 24px" id="top-title">Welcome back</p>
+          <h1 style="font-size: 48px" id="title">Heli Chain</h1>
+        </div>
+        <div class="text-primary" id="description">
+          Swift Transactions, Low Fees and High Security
+        </div>
+      </article>
+      <div class="d-flex flex-column gap-3 px-4">
+        <button
+          id="continute"
+          class="background-main w-full"
+          style="height: 50px; border: none; border-radius: 50px"
+        >
+          Sign In with Google
+        </button>
+      </div>
+    </section>
+    <script>startApp();</script>
+  </body>
+</html>

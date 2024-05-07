@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Referrals - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <script src="./js/package/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      input::placeholder {
+        color: rgba(254, 232, 76, 0.67);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body class="screen" style="background-color: black">
+    <!--  -->
+    <header class="section-container">
+      <section class="d-flex justify-content-between align-items-center">
+        <a
+          style="text-decoration: none"
+          href="profile.html"
+          class="d-flex gap-3 align-items-center"
+        >
+          <div class="">
+            <img
+              style="width: 40px; height: 40px; object-fit: cover"
+              src="./image/Avatar.png"
+              alt=""
+            />
+          </div>
+          <div class="d-flex flex-column">
+            <span style="color: white" id="fullName"></span>
+            <span class="text-main" id="rank"></span>
+          </div>
+        </a>
+        <div class="" style="display: flex; gap: 12px">
+          <a
+            href="profile.html"
+            class=""
+            style="
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 100%;
+            "
+          >
+            <ion-icon
+              style="width: 22px; height: 22px; object-fit: cover; color: white"
+              name="settings-outline"
+            ></ion-icon>
+          </a>
+          <a
+            href="notify.html"
+            class=""
+            style="
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 100%;
+            "
+          >
+            <ion-icon
+              style="width: 22px; height: 22px; object-fit: cover; color: white"
+              name="notifications-outline"
+            ></ion-icon>
+          </a>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+    <article class="section-container d-flex flex-column gap-3" style="padding-bottom: 100px;">
+      <section class="d-flex gap-2 align-items-start">
+        <div class="w-50 d-flex flex-column gap-2 text-white">
+          <span style="font-size: 20px">Your network</span>
+          <div class="d-flex gap-2 text-main font-bold align-items-center">
+            <span style="font-size: 42px">100</span>
+            <span style="font-size: 20px; margin-top: 10px">Node</span>
+          </div>
+        </div>
+        <div style="
+          width: 1px;
+          height: 80px;
+          background-color: white;
+          opacity: .3;
+          margin-right: 24px;
+          margin-top: 10px;
+        "></div>
+        <div class="w-50 d-flex flex-column gap-2 text-white">
+          <span style="font-size: 20px">Total profit</span>
+          <div class="d-flex gap-2 text-main font-bold align-items-center mt-2">
+            <span style="font-size: 32px">$</span>
+            <span style="font-size: 32px">100.000</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="background-main d-flex flex-column gap-2 py-2 px-3 text-black font-bold" style="border-radius: 14px;">
+        <span class="text-small">EXPAND YOUR NETWOKR NOW</span>
+        <div class="d-flex justify-content-between gap-2 align-items-center">
+          <span style="font-size: 26px;">8XY30C</span>
+          <button class="bg-black px-3 py-1" style="max-width: 120px; width: 90px;border-radius: 24px;border:none"><ion-icon class="text-main mt-2" name="copy-outline"></ion-icon></button>
+        </div>
+      </section>
+
+      <section class="font-bold text-white d-flex flex-column gap-3">
+        <span style="font-size: 20px">Referrals</span>
+        <div
+          class="d-flex align-items-center px-3 py-1"
+          style="
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+          "
+        >
+          <ion-icon
+            class="text-main"
+            style="width: 16px; height: 16px"
+            name="search-outline"
+          ></ion-icon>
+          <input
+            class="flex-grow-1 py-2 px-2 text-white"
+            style="
+              border: none;
+              border-radius: 24px;
+              background-color: transparent;
+              font-size: 14px;
+            "
+            placeholder="Search"
+            type="text"
+          />
+        </div>
+      </section>
+
+      <section id="load" class="d-flex flex-column gap-3"></section>
+
+    </article>
+    <!--  -->
+    <nav
+      class="fixed-bottom mx-auto"
+      style="background-color: rgb(28, 28, 28); max-width: 768px"
+    >
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <a href="index.html" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="home"></ion-icon>
+        </a>
+        <a href="wallet.html" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="wallet"></ion-icon>
+        </a>
+        <a href="https://helichain.io/" target="_blank" class="text-secondary">
+          <img
+            src="./image/icon/Bitmap.png"
+            style="width: 50px; height: 50px; object-fit: cover"
+            alt=""
+          />
+        </a>
+        <a
+          href="startMining.html"
+          class="text-secondary d-flex align-items-end"
+        >
+          <img src="image/icon/mine.svg" alt="" />
+        </a>
+        <a
+          href="index.html"
+          class="text-main d-flex flex-column align-items-center"
+          style="text-decoration: none"
+        >
+          <span>Referrals</span>
+          <span
+            class="background-main"
+            style="width: 6px; height: 6px; border-radius: 100%"
+          ></span>
+        </a>
+      </section>
+    </nav>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="BOOSTER"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-black" style="border-radius: 14px">
+          <div class="modal-body px-3">
+            <span class="text-main" style="font-size: 15px; font-weight: 900;" id="titleModal">Your F1s</span>
+            <section class="">
+              <div class="d-flex flex-column gap-3 mt-3">
+                <div
+                  class="d-flex justify-content-between align-items-center text-white font-bold pb-2"
+                  style="
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                    font-size: 13px;
+                  "
+                >
+                  <span>0xdacc…a09axz</span>
+
+                  <span class="text-main">$ 100.00</span>
+                </div>
+
+                <div class="d-flex flex-column gap-3 mt-1">
+                  <div
+                    class="d-flex justify-content-between align-items-center text-white font-bold pb-2"
+                    style="
+                      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                      font-size: 13px;
+                    "
+                  >
+                    <span>0xdacc…a09axz</span>
+  
+                    <span class="text-main">$ 100.00</span>
+                  </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="js/profile.js"></script>
+
+  <script>
+    const data = [
+      {
+        id: 123,
+        code: "Your F1s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 124,
+        code: "Your F2s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 125,
+        code: "Your F3s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 126,
+        code: "Your F4s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 126,
+        code: "Your F4s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 126,
+        code: "Your F4s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 126,
+        code: "Your F4s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+      {
+        id: 126,
+        code: "Your F4s",
+        price: "100 users",
+        total: "$ 100.00",
+      },
+
+    ];
+
+    async function loadData() {
+      const load = document.getElementById("load");
+      data.forEach((items) => {
+        const mainDiv = document.createElement("div");
+        mainDiv.classList.add("d-flex", "gap-2", "align-items-center");
+        mainDiv.setAttribute("data-bs-toggle", "modal");
+        mainDiv.setAttribute("data-bs-target", "#BOOSTER");
+        
+        mainDiv.addEventListener('click', () =>{
+          const titleModal = document.getElementById('titleModal')
+          titleModal.innerText =items.code
+        })
+
+        // Tạo phần tử div chứa hình ảnh
+        const imageDiv = document.createElement("div");
+        const image = document.createElement("img");
+        imageDiv.style.backgroundColor = "rgba(254, 232, 76, 0.16)";
+        imageDiv.classList.add("d-flex", "justify-content-center", "p-2");
+        imageDiv.style.width = "35px";
+        imageDiv.style.height = "35px";
+        image.style.objectFit = "cover";
+        imageDiv.style.borderRadius = "100%";
+        image.src = "/image/icon/people.svg";
+        image.classList.add("text-main");
+        image.alt = "";
+        imageDiv.appendChild(image);
+        mainDiv.appendChild(imageDiv);
+
+        // Tạo phần tử div chứa thông tin
+        const infoDiv = document.createElement("div");
+        infoDiv.classList.add(
+          "d-flex",
+          "flex-grow-1",
+          "justify-content-between",
+          "align-items-start",
+          "text-white"
+        );
+
+        // Tạo phần tử div chứa thông tin số tiền HELI và USD
+        const amountDiv = document.createElement("div");
+        amountDiv.classList.add("d-flex", "flex-column");
+        const heliAmountSpan = document.createElement("span");
+        heliAmountSpan.classList.add("text-normal", "mt-1");
+        heliAmountSpan.textContent = items.code;
+        const dollarAmountSpan = document.createElement("span");
+        dollarAmountSpan.classList.add("text-small");
+        dollarAmountSpan.textContent = items.price;
+        amountDiv.appendChild(heliAmountSpan);
+        amountDiv.appendChild(dollarAmountSpan);
+        infoDiv.appendChild(amountDiv);
+
+        // Tạo phần tử div chứa thông tin tổng số tiền
+        const totalAmountDiv = document.createElement("div");
+        const totalAmountSpan = document.createElement("span");
+        totalAmountSpan.classList.add("text-normal");
+        totalAmountSpan.textContent = items.total;
+        totalAmountDiv.appendChild(totalAmountSpan);
+        infoDiv.appendChild(totalAmountDiv);
+
+        mainDiv.appendChild(infoDiv);
+
+        load.appendChild(mainDiv);
+      });
+    }
+
+    loadData();
+
+
+
+    function loadModal () {
+
+    }
+  </script>
+</html>

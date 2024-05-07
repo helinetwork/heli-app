@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet Detail - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <script src="./js/package/bootstrap.bundle.min.js" ></script>
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header style="background-color: rgba(255, 255, 255, 0.09)">
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <div class="d-flex align-items-center" onclick="window.history.go(-1)">
+          <ion-icon
+            class="text-main"
+            style="width: 24px; height: 24px"
+            name="chevron-back"
+          ></ion-icon>
+        </div>
+        <div class="">
+          <span class="text-main font-bold" style="font-size: 24px">HELI</span>
+        </div>
+        <div class="">
+          <span class="" style="width: 24px; color: transparent">----</span>
+        </div>
+      </section>
+
+      <!--  -->
+      <section class="section-container d-flex flex-column gap-3 py-4">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center gap-3"
+        >
+          <img
+            src="./image/Avatar.png"
+            style="
+              width: 64px;
+              height: 64px;
+              object-fit: cover;
+              border-radius: 100%;
+            "
+            alt=""
+          />
+          <div class="text-white d-flex flex-column align-items-center gap-1">
+            <span class="text-main" style="font-size: 20px">100.00</span>
+            <span class="text-small">$ 100,000.00</span>
+          </div>
+        </div>
+        <!--  -->
+        <div class="background-main p-3 d-flex" style="border-radius: 14px">
+          <div
+            class="w-50 d-flex flex-column align-items-center"
+            style="border-right: 0.01px solid lightgrey"
+          >
+            <span class="text-small font-semibold">AVAILABLE BALANCE</span>
+            <span class="font-bold" style="font-size: 20px">50.00</span>
+          </div>
+          <div class="w-50 d-flex flex-column align-items-center">
+            <span class="text-small font-semibold">LOCKED BALANCE</span>
+            <span class="font-bold" style="font-size: 20px">50.00</span>
+          </div>
+        </div>
+        <!--  -->
+        <div class="d-flex justify-content-between gap-3">
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#DEPOSIT"
+            class="p-2 background-main"
+            style="
+              max-width: 300px;
+              width: 100%;
+              border-radius: 24px;
+              border: none;
+              font-size: 12px;
+            "
+          >
+            Deposit
+          </button>
+          <button
+            data-bs-toggle="modal"
+            data-bs-target="#WITHDRAW"
+            class="p-2 background-primary text-main"
+            style="
+              max-width: 300px;
+              width: 100%;
+              border-radius: 24px;
+              border: none;
+              font-size: 12px;
+            "
+          >
+            Withdraw
+          </button>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+    <article class="section-container pt-3">
+      <span class="font-bold text-white" style="font-size: 20px">History</span>
+      <section class="" id="load"></section>
+    </article>
+
+    <!-- Modal DEPOSIT -->
+    <div
+      class="modal fade background-secondary"
+      id="DEPOSIT"
+      tabindex="-1"
+      aria-labelledby="DEPOSIT"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content"
+          style="border-radius: 14px; background-color: black"
+        >
+          <div class="modal-body d-flex flex-column gap-2">
+            <section>
+              <span class="text-main">DEPOSIT</span>
+            </section>
+            <section class="d-flex flex-column gap-3">
+              <!-- Token -->
+              <div class="text-white" style="position: relative">
+                <span class="text-small">Choose token</span>
+                <div
+                  class="background-secondary mt-2"
+                  id="select"
+                  style="
+                    position: relative;
+                    border-radius: 8px;
+                    cursor: pointer;
+                  "
+                >
+                  <div
+                    class="d-flex justify-content-between p-2 align-items-center"
+                    id="down"
+                  >
+                    <div class="d-flex gap-2 align-items-center text-small">
+                      <img
+                        style="width: 20px; height: 20px"
+                        src="./image/Avatar.png"
+                        alt=""
+                        id="selectIcon"
+                      />
+                      <span id="selectTitle">USTD</span>
+                    </div>
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                  </div>
+                </div>
+                <!--  -->
+                <div class="" id="listToken" style="display: none">
+                  <div
+                    class="background-secondary p-2 mt-2 d-flex flex-column gap-2 overflow-auto"
+                    style="border-radius: 8px; max-height: 80px; opacity: 0"
+                    id="coinDeposit"
+                  >
+                    <!--  -->
+                  </div>
+                </div>
+              </div>
+              <!-- Network -->
+              <div class="">
+                <div class="text-white">
+                  <span class="text-small">Choose Network</span>
+                  <div
+                    class="background-secondary mt-2"
+                    id="selectNetwork"
+                    style="border-radius: 8px; cursor: pointer"
+                  >
+                    <div
+                      class="d-flex justify-content-between p-2 align-items-center"
+                      id="downNetwork"
+                    >
+                      <div class="d-flex gap-2 align-items-center text-small">
+                        <span id="selectTitleNetwork">TRX - Tron (TRC20)</span>
+                      </div>
+                      <ion-icon name="caret-down-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <!--  -->
+                  <div class="" id="listNetwork" style="display: none">
+                    <div
+                      class="background-secondary p-2 mt-2 d-flex flex-column gap-2 overflow-auto text-small"
+                      style="border-radius: 8px; max-height: 80px"
+                      id="networkDeposit"
+                    >
+                      <!--  -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- QR -->
+              <div class="">
+                <div
+                  class="background-secondary p-4 d-flex justify-content-between gap-3 align-items-center"
+                  style="border-radius: 8px"
+                >
+                  <div class="bg-white" style="width: 76px; height: 76px">
+                    <!-- QR -->
+                  </div>
+                  <div
+                    class="d-flex flex-grow-1 justify-content-between align-items-center"
+                  >
+                    <div
+                      class="d-flex flex-column gap-2 text-small text-secondary"
+                    >
+                      <span>Address</span>
+                      <span class="text-main">0xdabcnxmdb81</span>
+                    </div>
+                    <div class="">
+                      <ion-icon
+                        class="text-main font-bold"
+                        style="width: 16px; height: 16px"
+                        name="copy-outline"
+                      ></ion-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <button
+              type="button"
+              class="w-full background-main py-2 mt-3 text-small"
+              style="border: none; border-radius: 20px"
+              data-bs-dismiss="modal"
+            >
+              CONFIRM
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal DEPOSIT -->
+    <!-- Modal WITHDRAW -->
+    <div
+      class="modal fade background-secondary"
+      id="WITHDRAW"
+      tabindex="-1"
+      aria-labelledby="WITHDRAW"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content"
+          style="border-radius: 14px; background-color: black"
+        >
+          <div class="modal-body d-flex flex-column gap-2">
+            <section>
+              <span class="text-main">WITHDRAW</span>
+            </section>
+            <section class="d-flex flex-column gap-3">
+              <!-- Network -->
+              <div class="">
+                <div class="text-white">
+                  <span class="text-small">Choose Network</span>
+                  <div
+                    class="background-secondary mt-2"
+                    id="selectNetwork"
+                    style="border-radius: 8px; cursor: pointer"
+                  >
+                    <div
+                      class="d-flex justify-content-between p-2 align-items-center"
+                      id="downNetwork"
+                    >
+                      <div class="d-flex gap-2 align-items-center text-small">
+                        <span id="selectTitleNetwork">TRX - Tron (TRC20)</span>
+                      </div>
+                      <ion-icon name="caret-down-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <!--  -->
+                  <div class="" id="listNetwork" style="display: none">
+                    <div
+                      class="background-secondary p-2 mt-2 d-flex flex-column gap-2 overflow-auto text-small"
+                      style="border-radius: 8px; max-height: 80px"
+                      id="networkDraw"
+                    >
+                      <!--  -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Token -->
+              <div class="text-white" style="position: relative">
+                <span class="text-small">Token</span>
+                <div
+                  class="d-flex align-items-center pe-2 background-secondary mt-2"
+                  style="
+                    min-height: 47px;
+                    max-height: 47px;
+                    border-radius: 8px;
+                    border: none;
+                  "
+                >
+                  <input
+                    type="text"
+                    class="flex-grow-1 py-2 px-2 text-white text-small"
+                    name=""
+                    id=""
+                    placeholder="Amount"
+                    style="
+                      min-height: 47px;
+                      max-height: 47px;
+                      border-radius: 8px;
+                      border: none;
+                      background-color: transparent;
+                    "
+                  />
+                  <div
+                    class="background-secondary"
+                    id="select"
+                    style="
+                      position: relative;
+                      border-radius: 50px;
+                      width: 130px;
+                      cursor: pointer;
+                    "
+                  >
+                    <div
+                      class="d-flex justify-content-between p-2 align-items-center"
+                      id="down"
+                    >
+                      <div class="d-flex gap-2 align-items-center text-small">
+                        <img
+                          style="width: 20px; height: 20px"
+                          src="./image/Avatar.png"
+                          alt=""
+                          id="selectIcon"
+                        />
+                        <span id="selectTitle"></span>
+                      </div>
+                      <!-- <ion-icon name="caret-down-outline"></ion-icon> -->
+                    </div>
+                  </div>
+                </div>
+
+                <!--  -->
+                <div class="" id="listToken" style="display: none">
+                  <div
+                    class="background-secondary p-2 mt-2 d-flex flex-column gap-2 overflow-auto"
+                    style="border-radius: 8px; max-height: 80px; opacity: 0"
+                    id="coinDraw"
+                  >
+                    <!--  -->
+                  </div>
+                </div>
+              </div>
+              <!-- Address -->
+              <div class="">
+                <label
+                  for="exampleFormControlInput1"
+                  class="form-label text-small text-white"
+                  >Address</label
+                >
+                <div class="background-secondary" style="border-radius: 8px">
+                  <input
+                    type="text"
+                    class="text-white px-2 py-3 text-small"
+                    style="
+                      border: none;
+                      border-radius: 8px;
+                      background-color: transparent;
+                    "
+                    placeholder="Address"
+                  />
+                </div>
+              </div>
+              <!-- Fee/Gas-->
+              <div class="mt-2 d-flex text-white text-small font-semibold px-1">
+                <div class="w-50 d-flex flex-column gap-2">
+                  <span class="text-secondary">Balance</span>
+                  <span>0.0123 HELI</span>
+                </div>
+                <div class="w-50 d-flex flex-column gap-2">
+                  <span class="text-secondary">Gas fee</span>
+                  <span>1 HELI</span>
+                </div>
+              </div>
+            </section>
+            <button
+              type="button"
+              class="w-full background-main py-2 mt-3 text-small"
+              style="border: none; border-radius: 20px"
+              data-bs-dismiss="modal"
+            >
+              WITHDRAW
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal WITHDRAW -->
+  </body>
+
+  <script>
+    const data = [
+      {
+        id: 123453,
+        date: "18/04/2024",
+        items: [
+          {
+            id: 3545,
+            title: "Swap",
+            toAdress: "",
+            total: "+ 1,600.82 HELI",
+          },
+          {
+            id: 3545,
+            title: "Sent",
+            toAdress: "To 0x8601...9718",
+            total: "+ 1,600.82 HELI",
+          },
+        ],
+      },
+      {
+        id: 123453,
+        date: "19/04/2024",
+        items: [
+          {
+            id: 3545,
+            title: "Swap",
+            toAdress: "",
+            total: "+ 1,600.82 HELI",
+          },
+          {
+            id: 3545,
+            title: "Sent",
+            toAdress: "To 0x8601...9718",
+            total: "+ 1,600.82 HELI",
+          },
+        ],
+      },
+    ];
+
+    async function loadData() {
+      const load = document.getElementById("load");
+      data.forEach((items) => {
+        const containerDIV = document.createElement("div");
+        containerDIV.classList.add("d-flex", "flex-column", "gap-2", "py-3");
+        // date
+        const titleDate = document.createElement("span");
+        titleDate.classList.add("text-secondary", "text-small");
+        titleDate.innerText = items.date;
+
+        // div items
+        const DIVchild = document.createElement("div");
+        DIVchild.classList.add("d-flex", "flex-column", "gap-2");
+        items.items.map((e) => {
+          const mainDiv = document.createElement("div");
+          mainDiv.classList.add("d-flex", "gap-2");
+
+          // Tạo phần tử div chứa hình ảnh
+          const imageDiv = document.createElement("div");
+          const image = document.createElement("img");
+          image.style.width = "40px";
+          image.style.height = "40px";
+          image.style.objectFit = "cover";
+          image.style.borderRadius = "100%";
+          image.src = "/image/Avatar.png";
+          image.alt = "";
+          imageDiv.appendChild(image);
+          mainDiv.appendChild(imageDiv);
+
+          // Tạo phần tử div chứa thông tin
+          const infoDiv = document.createElement("div");
+          infoDiv.classList.add(
+            "d-flex",
+            "flex-grow-1",
+            "justify-content-between",
+            "align-items-end",
+            "text-white"
+          );
+
+          // Tạo phần tử div chứa thông tin số tiền HELI và USD
+          const amountDiv = document.createElement("div");
+          amountDiv.classList.add("d-flex", "flex-column");
+          const heliAmountSpan = document.createElement("span");
+          heliAmountSpan.classList.add("text-normal", "mt-1");
+          heliAmountSpan.textContent = e.title;
+          const dollarAmountSpan = document.createElement("span");
+          dollarAmountSpan.classList.add("text-small");
+          dollarAmountSpan.textContent = e.toAdress ? e.toAdress : "---";
+          amountDiv.appendChild(heliAmountSpan);
+          amountDiv.appendChild(dollarAmountSpan);
+          infoDiv.appendChild(amountDiv);
+
+          // Tạo phần tử div chứa thông tin tổng số tiền
+          const totalAmountDiv = document.createElement("div");
+          const totalAmountSpan = document.createElement("span");
+          totalAmountSpan.classList.add(
+            "text-normal",
+            "text-success",
+            "font-semibold"
+          );
+          totalAmountSpan.textContent = e.total;
+          totalAmountDiv.appendChild(totalAmountSpan);
+          infoDiv.appendChild(totalAmountDiv);
+
+          mainDiv.appendChild(infoDiv);
+          DIVchild.appendChild(mainDiv);
+        });
+        containerDIV.appendChild(titleDate);
+        containerDIV.appendChild(DIVchild);
+        load.appendChild(containerDIV);
+      });
+    }
+    loadData();
+  </script>
+
+  <script>
+    const Datacoin = [
+      {
+        id: 123,
+        title: "USTD",
+        image: "",
+      },
+      {
+        id: 123,
+        title: "BTC",
+        image: "",
+      },
+      {
+        id: 123,
+        title: "ETH",
+        image: "",
+      },
+    ];
+    const listToken = document.querySelectorAll("#listToken");
+    const coinDeposit = document.getElementById("coinDeposit");
+    const coinDraw = document.getElementById("coinDraw");
+    const selectTitle = document.querySelectorAll("#selectTitle");
+    const selectTitleNetwork = document.querySelectorAll("#selectTitleNetwork");
+    const selectIcon = document.getElementById("selectIcon");
+
+    const down = document.querySelectorAll("#down").forEach((e) => {
+      e.addEventListener("click", () => {
+        listToken.forEach((dt) => {
+          dt.style.display = dt.style.display == "none" ? "block" : "none";
+          if (dt.style.display == "block") {
+            coinDeposit.style.transitionDuration = "300ms";
+            coinDeposit.style.opacity = "1";
+            //
+            coinDraw.style.transitionDuration = "300ms";
+            coinDraw.style.opacity = "1";
+          }
+        });
+      });
+    });
+
+    function loadCoin() {
+      Datacoin.forEach((items) => {
+        const a = document.createElement("a");
+        a.classList.add(
+          "d-flex",
+          "gap-2",
+          "align-items-center",
+          "text-white",
+          "text-normal",
+          "hover"
+        );
+
+        a.style.textDecoration = "none";
+        //
+        const img = document.createElement("img");
+        img.src = "/image/Avatar.png";
+        img.style.width = "20px";
+        img.style.height = "20px";
+        //
+        const spanName = document.createElement("span");
+        spanName.classList.add("text-small");
+        spanName.innerText = items.title;
+
+        a.appendChild(img);
+        a.appendChild(spanName);
+        a.addEventListener("click", () => {
+          selectTitle.forEach((selectTitleItems) => {
+            selectTitleItems.innerText = items.title;
+          });
+          //
+          listToken.forEach((listTokenItems) => {
+            listTokenItems.style.display = "none";
+          });
+        });
+
+        coinDeposit.appendChild(a);
+        const clone = a.cloneNode(true);
+        clone.addEventListener("click", () => {
+          selectTitle.forEach((selectTitleItems) => {
+            selectTitleItems.innerText = items.title;
+          });
+          //
+          listToken.forEach((listTokenItems) => {
+            listTokenItems.style.display = "none";
+          });
+        });
+        coinDraw.appendChild(clone);
+      });
+    }
+    loadCoin();
+
+    // Load Network
+
+    const dataNetwork = [
+      {
+        id: 123,
+        title: "TRX - Tron (TRC20)",
+        image: "",
+      },
+      {
+        id: 125,
+        title: "TRX - Tron (TRC21)",
+        image: "",
+      },
+      {
+        id: 124,
+        title: "TRX - Tron (TRC22)",
+        image: "",
+      },
+    ];
+
+    const listNetwork = document.querySelectorAll("#listNetwork");
+    const networkDeposit = document.getElementById("networkDeposit");
+    const networkDraw = document.getElementById("networkDraw");
+    const downNetwork = document
+      .querySelectorAll("#downNetwork")
+      .forEach((e) => {
+        e.addEventListener("click", () => {
+          listNetwork.forEach((listNetworkItems) => {
+            listNetworkItems.style.display =
+              listNetworkItems.style.display == "none" ? "block" : "none";
+            if (listNetworkItems.style.display == "block") {
+              networkDeposit.style.transitionDuration = "300ms";
+              networkDeposit.style.opacity = "1";
+              //
+              networkDraw.style.transitionDuration = "300ms";
+              networkDraw.style.opacity = "1";
+            }
+          });
+        });
+      });
+
+    async function loadNetwork() {
+      dataNetwork.forEach((items) => {
+        const an = document.createElement("a");
+        an.classList.add(
+          "d-flex",
+          "gap-2",
+          "align-items-center",
+          "text-white",
+          "text-normal",
+          "hover"
+        );
+        an.style.textDecoration = "none";
+        //
+        // const img = document.createElement("img");
+        // img.src = "/image/Avatar.png";
+        // img.style.width = "20px";
+        // img.style.height = "20px";
+        //
+        const spanName = document.createElement("span");
+        spanName.innerText = items.title;
+        spanName.classList.add("px-2", "py-1", "text-small");
+
+        // a.appendChild(img);
+        an.appendChild(spanName);
+        an.addEventListener("click", () => {
+          selectTitleNetwork.forEach((selectTitleNetworkItem) => {
+            selectTitleNetworkItem.innerText = items.title;
+          });
+
+          listNetwork.forEach((listNetworkItem) => {
+            listNetworkItem.style.display = "none";
+          });
+        });
+
+        const clone = an.cloneNode(true);
+        clone.addEventListener("click", () => {
+          selectTitleNetwork.forEach((selectTitleNetworkItem) => {
+            selectTitleNetworkItem.innerText = items.title;
+          });
+
+          listNetwork.forEach((listNetworkItem) => {
+            listNetworkItem.style.display = "none";
+          });
+        });
+        networkDeposit.appendChild(an);
+        networkDraw.appendChild(clone);
+      });
+    }
+
+    loadNetwork();
+  </script>
+</html>

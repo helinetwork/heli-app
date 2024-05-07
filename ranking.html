@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saving - Heli</title>
+    <!-- package -->
+    <link rel="stylesheet" href="./css/package/bootstrap.min.css" />
+    <script src="./js/package/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/package/swiper-bundle.min.css" />
+    <script src="/js/package/swiper-element-bundle.min.js"></script>
+    <!-- <script src="/js/package/ionicons.js"></script>
+    <script src="/js/package/ionicons.esm.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!--  -->
+    <header class="section-container">
+      <section class="d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-3 align-items-center">
+          <div class="">
+            <img
+              style="width: 40px; height: 40px; object-fit: cover"
+              src="./image/Avatar.png"
+              alt=""
+            />
+          </div>
+          <div class="d-flex flex-column">
+            <span style="color: white" id="fullName"></span>
+            <span class="text-main" id="rank"></span>
+          </div>
+        </div>
+        <div class="" style="display: flex; gap: 12px">
+          <a
+            href="profile.html"
+            class=""
+            style="
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 100%;
+            "
+          >
+            <ion-icon
+              style="width: 22px; height: 22px; object-fit: cover; color: white"
+              name="settings-outline"
+            ></ion-icon>
+          </a>
+          <a
+            href="notify.html"
+            class=""
+            style="
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgba(255, 255, 255, 0.2);
+              border-radius: 100%;
+            "
+          >
+            <ion-icon
+              style="width: 22px; height: 22px; object-fit: cover; color: white"
+              name="notifications-outline"
+            ></ion-icon>
+          </a>
+        </div>
+      </section>
+    </header>
+    <!--  -->
+    <section>
+      <div class="swiper SwiperRanking" style="position: relative">
+        <div class="swiper-wrapper" id="loadRank"></div>
+        <div
+          class="swiper-button-next"
+          style="position: absolute; top: 35px; right: 30px"
+        ></div>
+        <div
+          class="swiper-button-prev"
+          style="position: absolute; top: 35px; right: 30px"
+        ></div>
+      </div>
+    </section>
+    <!--  -->
+    <nav
+      class="fixed-bottom mx-auto"
+      style="background-color: rgb(28, 28, 28); max-width: 768px"
+    >
+      <section
+        class="section-container d-flex justify-content-between align-items-center"
+      >
+        <a
+          href="index.html"
+          class="text-main d-flex flex-column align-items-center"
+          style="text-decoration: none"
+        >
+          <span>Home</span>
+          <span
+            class="background-main"
+            style="width: 6px; height: 6px; border-radius: 100%"
+          ></span>
+        </a>
+        <a href="wallet.html" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="wallet"></ion-icon>
+        </a>
+        <a href="#" class="text-secondary">
+          <img
+            src="./image/icon/Bitmap.png"
+            style="width: 50px; height: 50px; object-fit: cover"
+            alt=""
+          />
+        </a>
+        <a href="#" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="layers"></ion-icon>
+        </a>
+        <a href="#" class="text-secondary d-flex align-items-end">
+          <ion-icon style="width: 30px; height: 30px" name="people"></ion-icon>
+        </a>
+      </section>
+    </nav>
+  </body>
+
+  <script src="js/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".SwiperRanking", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+
+  <script>
+    const data = [
+      {
+        rankName: "Jade",
+        iconName: "shield-half-outline",
+        progressValue: 25,
+        currentRank: 10000,
+        nextRank: 60000,
+        claimReward: "+ $ 100.000",
+        buttons: ["$ 10.000", "$ 10.000", "$ 10.000"],
+        description: "This is rank detail",
+      },
+      {
+        rankName: "Pearl",
+        iconName: "shield-half-outline",
+        progressValue: 25,
+        currentRank: 0,
+        nextRank: 60000,
+        claimReward: "+ $ 100.000",
+        buttons: ["$ 10.000", "$ 10.000", "$ 10.000"],
+        description: "This is rank detail",
+      },
+      // Thêm các phần tử khác vào đây nếu cần
+    ];
+
+    async function getRanking() {
+      const container = document.getElementById("loadRank");
+      data.forEach((item) => {
+        // Tạo phần tử div
+        const divElement = document.createElement("div");
+        divElement.className = "swiper-slide";
+        divElement.style.backgroundColor = "transparent";
+
+        // Tạo phần tử section-container
+        const sectionContainer = document.createElement("section");
+        sectionContainer.className =
+          "d-flex flex-column gap-3 w-100 section-container";
+
+        // Tạo phần tử div dùng cho rankName và iconName
+        const rankDiv = document.createElement("div");
+        rankDiv.className = "d-flex justify-content-center";
+
+        const rankNameDiv = document.createElement("div");
+        rankNameDiv.className = "d-flex align-items-center gap-2 text-main";
+        rankNameDiv.innerHTML = `<span id="rankName">${item.rankName}</span><ion-icon style="width: 18px; height: 18px" name="${item.iconName}"></ion-icon>`;
+
+        rankDiv.appendChild(rankNameDiv);
+
+        // Tạo phần tử div dùng cho currentRank, nextRank và progress
+        const rankInfoDiv = document.createElement("div");
+        rankInfoDiv.className = "d-flex flex-column gap-2";
+
+        const rankInfoSection1 = document.createElement("section");
+        rankInfoSection1.className =
+          "d-flex justify-content-between text-small font-bold text-secondary";
+        rankInfoSection1.innerHTML = `<span>Current rank</span><span>Next rank</span>`;
+
+        const rankProgressBar = document.createElement("section");
+        rankProgressBar.className = "progress";
+        rankProgressBar.role = "progressbar";
+        rankProgressBar.setAttribute("aria-label", "Basic example");
+        rankProgressBar.setAttribute("aria-valuenow", item.progressValue);
+        rankProgressBar.setAttribute("aria-valuemin", "0");
+        rankProgressBar.setAttribute("aria-valuemax", "100");
+        rankProgressBar.style.height = "8px";
+
+        const rankProgressBarInner = document.createElement("div");
+        rankProgressBarInner.className = "progress-bar";
+        rankProgressBarInner.style.width = `${item.currentRank / item.nextRank * 100}%`;
+
+        rankProgressBar.appendChild(rankProgressBarInner);
+
+        const rankInfoSection2 = document.createElement("section");
+        rankInfoSection2.className =
+          "d-flex justify-content-between text-small font-bold text-secondary";
+        rankInfoSection2.innerHTML = `<span>$ ${Math.floor(item.currentRank).toLocaleString("vi-VN")}</span><span>$ ${Math.floor(item.nextRank).toLocaleString("vi-VN")}</span>`;
+
+        rankInfoDiv.appendChild(rankInfoSection1);
+        rankInfoDiv.appendChild(rankProgressBar);
+        rankInfoDiv.appendChild(rankInfoSection2);
+
+        // Tạo phần tử div dùng cho claimReward và buttons
+        const rewardDiv = document.createElement("div");
+        rewardDiv.className = "d-flex flex-column gap-2";
+
+        const rewardSection = document.createElement("section");
+        rewardSection.className =
+          "background-main d-flex justify-content-between align-items-center px-4 py-2";
+        rewardSection.style.borderRadius = "24px";
+        rewardSection.innerHTML = `<div class="d-flex flex-column align-items-start text-small font-semibold"><span>CLAIM REWARD</span><span>${item.claimReward}</span></div><div><ion-icon style="width: 18px; height: 18px" name="shield-half-outline"></ion-icon></div>`;
+
+        const buttonsSection = document.createElement("section");
+        buttonsSection.className = "d-flex justify-content-between gap-2";
+
+        item.buttons.forEach((buttonText) => {
+          const button = document.createElement("button");
+          button.className =
+            "background-secondary text-main px-3 py-2 text-small font-semibold";
+          button.style.border = "none";
+          button.style.borderRadius = "24px";
+          button.style.maxWidth = "200px";
+          button.style.width = "100%";
+          button.textContent = buttonText;
+
+          buttonsSection.appendChild(button);
+        });
+
+        rewardDiv.appendChild(rewardSection);
+        rewardDiv.appendChild(buttonsSection);
+
+        // Tạo phần tử div dùng cho description
+        const descriptionDiv = document.createElement("div");
+        descriptionDiv.className = "d-flex flex-column gap-3";
+
+        const descriptionHeader = document.createElement("span");
+        descriptionHeader.className = "font-bold text-white";
+        descriptionHeader.style.fontSize = "20px";
+        descriptionHeader.style.textAlign = "start";
+        descriptionHeader.textContent = 'Rank detail';
+
+        const descriptionContent = document.createElement("div");
+        descriptionContent.id = "description";
+        descriptionContent.style.textAlign = 'start'
+        descriptionContent.classList.add('text-white','text-small')
+        descriptionContent.innerHTML = item.description
+
+        descriptionDiv.appendChild(descriptionHeader);
+        descriptionDiv.appendChild(descriptionContent);
+
+        // Gắn các phần tử vào section-container
+        sectionContainer.appendChild(rankDiv);
+        sectionContainer.appendChild(rankInfoDiv);
+        sectionContainer.appendChild(rewardDiv);
+        sectionContainer.appendChild(descriptionDiv);
+
+        // Gắn section-container vào div
+        divElement.appendChild(sectionContainer);
+
+        // Gắn div vào DOM
+
+        container.appendChild(divElement);
+      });
+    }
+
+    getRanking();
+  </script>
+</html>
